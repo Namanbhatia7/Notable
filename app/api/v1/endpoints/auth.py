@@ -118,8 +118,6 @@ def get_password_hash(password):
 
 async def get_user(db, username: str):
     user = await db["users"].find_one({"username": username})
-
-    print(user)
     if not user:
         return False
 
@@ -194,7 +192,6 @@ async def login_for_access_token(
 
 @router.post("/signup", response_model=User)
 async def create_user(user: UserCreate, db = Depends(get_db)):
-    print(db)
     db_user = await db["users"].find_one({"username": user.username})
     if db_user:
         raise HTTPException(status_code=400, detail="Email already registered")
