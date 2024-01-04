@@ -3,7 +3,7 @@ from fastapi import Depends, APIRouter, HTTPException
 from typing import List
 from app.core.database import get_db
 from app.models.note import Note, NoteCreate
-from app.api.v1.endpoints.auth import get_current_active_user
+from app.services.auth import get_current_active_user
 from app.models.user import User
 
 router = APIRouter()
